@@ -1,11 +1,12 @@
 import React from "react";
+import "./PostContainer.scss";
 
 import CommentSection from "../CommentSection/CommentSection";
 
 const PostContainer = props => {
   return(
-      <div>
-          <img src={props.post.imageUrl} />
+      <div className="postContainer">
+          <img src={props.post.imageUrl} alt="postImg" />
           <CommentSection comments={props.post.comments} />
       </div>
   );
