@@ -4,7 +4,7 @@ import "./Comment.scss";
 const Comment = props => {
     return (
         <div className="comment">
-            <span className="username">{props.username}</span> <span className="comment">{props.text}</span>
+            <span className="username">{props.username}</span> <span className="text">{props.text}</span>
         </div>
     );
 }

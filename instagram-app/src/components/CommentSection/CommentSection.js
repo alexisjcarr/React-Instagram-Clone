@@ -1,4 +1,5 @@
 import React from "react";
+import "./CommentSection.scss";
 import Comment from '../Comment/Comment';
 
 const CommentSection = props => {
@@ -9,6 +10,7 @@ const CommentSection = props => {
           ))}
           <form>
               <input 
+              type="text"
               placeholder="Add a comment..."
               />
           </form>

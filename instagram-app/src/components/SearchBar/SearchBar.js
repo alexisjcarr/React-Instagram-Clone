@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SearchBar.scss';
 
 class SearchBar extends Component {
     constructor() {
@@ -10,9 +11,13 @@ class SearchBar extends Component {
 
     render() { 
         return (
-            <div>
-                <img src='../../assets/ig_search_bar.png' alt="searchbar" />
-            </div>
+            <form>
+                <input 
+                    className="searchbar"
+                    type="text"
+                    placeholder="&#128269; Search"
+                />
+            </form>
         );
     }
 }

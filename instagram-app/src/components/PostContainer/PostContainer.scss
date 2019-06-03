@@ -1,19 +1,25 @@
 .postContainer {
   margin-bottom: 5px;
 
-  span {
+  .user {
     display: flex;
     align-items: center;
 
     .profileImg {
       border-radius: 100px;
-      width: 40px;
+      width: 30px;
       margin-right: 10px;
     }
 
     .username {
       font-weight: bolder;
     }
+  }
+
+  .icons {
+      font-size: 30px;
+      cursor: pointer;
+      padding: 0;
   }
 
   .likes {
