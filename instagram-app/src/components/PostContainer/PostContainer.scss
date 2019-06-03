@@ -1,3 +1,27 @@
 .postContainer {
-    margin-bottom: 2rem;
+  margin-bottom: 5px;
+
+  span {
+    display: flex;
+    align-items: center;
+
+    .profileImg {
+      border-radius: 100px;
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .username {
+      font-weight: bolder;
+    }
+  }
+
+  .likes {
+    font-weight: bolder;
+  }
+
+  .time {
+    color: grey;
+    font-size: 10px;
+  }
 }
