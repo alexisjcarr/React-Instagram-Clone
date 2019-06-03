@@ -1,5 +1,9 @@
-.searchbar {
+.searchBar {
     margin-top: 10px;
-    width: 100%;
-    text-align: center;
+    display: flex;
+    font-size: 20px;
+    
+    div {
+        margin-right: 20px;
+    }
 }
