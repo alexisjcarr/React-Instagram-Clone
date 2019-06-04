@@ -11,44 +11,44 @@ class CommentSection extends Component {
     };
   }
 
-  // saveStateToLocalStorage = () => {
-  //   for (let key in this.state) {
-  //     localStorage.setItem(key, JSON.stringify(this.state[key]));
-  //   }
-  // };
+  saveStateToLocalStorage = () => {
+    for (let key in this.state) {
+      localStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+  };
 
-  // hydrateStateWithLocalStorage = () => {
-  //   for (let key in this.state) {
-  //     if (localStorage.hasOwnProperty(key)) {
-  //       let value = localStorage.getItem(key);
+  hydrateStateWithLocalStorage = () => {
+    for (let key in this.state) {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key);
 
-  //       try {
-  //         value = JSON.parse(value);
-  //         this.setState({ [key]: value });
-  //       } catch (e) {
-  //         this.setState({ [key]: value });
-  //       }
-  //     }
-  //   }
-  // };
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  };
 
-  // componentDidMount = () => {
-  //   this.hydrateStateWithLocalStorage();
+  componentDidMount = () => {
+    this.hydrateStateWithLocalStorage();
 
-  //   window.addEventListener(
-  //     "beforeunload",
-  //     this.saveStateToLocalStorage.bind(this)
-  //   );
-  // };
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+  };
 
-  // componentWillUnmount = () => {
-  //   window.removeEventListener(
-  //     "beforeunload",
-  //     this.saveStateToLocalStorage.bind(this)
-  //   );
+  componentWillUnmount = () => {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
 
-  //   this.saveStateToLocalStorage();
-  // };
+    this.saveStateToLocalStorage();
+  };
 
   handleChange = e => {
     this.setState({
