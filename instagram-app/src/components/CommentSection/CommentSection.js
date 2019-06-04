@@ -40,9 +40,9 @@ class CommentSection extends Component {
 
     render() {
         return (
-            <div>
+            <div className="commentSection">
                 {this.props.comments.map(comment => (
-                    <Comment username={comment.username} text={comment.text} />
+                    <Comment username={comment.username} text={comment.text} id={comment.id} />
                 ))}
                 <form>
                     <input 
