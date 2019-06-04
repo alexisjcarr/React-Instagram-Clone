@@ -34,23 +34,6 @@ class PostContainer extends Component {
     }
   };
 
-  // toggleTask = id => {
-  //   this.setState(prevState => {
-  //     return {
-  //       todoArray: prevState.todoArray.map(todoItem => {
-  //         if (todoItem.id === id) {
-  //           return {
-  //             ...todoItem,
-  //             completed: !todoItem.completed
-  //           };
-  //         } else {
-  //           return todoItem;
-  //         }
-  //       })
-  //     };
-  //   });
-  // };
-
   render() {
     return (
       <div className="postContainer">
