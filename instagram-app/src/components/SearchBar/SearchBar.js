@@ -16,13 +16,13 @@ class SearchBar extends Component {
     render() { 
         return (
             <form className="searchBar">
-                <div>
+                <div className="div">
                     <label for="search">
                         <FontAwesomeIcon icon={faInstagram} /> | Instagram 
                     </label>
                 </div>
 
-                <div>
+                <div className="div">
                 <input 
                     name="search"
                     className="searchbar"
