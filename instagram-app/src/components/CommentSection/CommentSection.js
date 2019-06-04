@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import "./CommentSection.scss";
 import Comment from '../Comment/Comment';
 
-/* 
-id: 1,
-        username: "twitch",
-        text: "Epic Street Fighter action here in Las Vegas at #EVO2017!"
-*/
-
 class CommentSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: 5,
-            username: 'alexisjcarr',
+            comments: this.props.comments,
+            username: '',
             text: ''
         }
     }
@@ -28,12 +22,14 @@ class CommentSection extends Component {
         e.preventDefault();
     
         let newComment = {
+          id: Date.now(),
+          username: 'alexiscarr',
           text: this.state.text,
         };
     
         this.setState(prevState => {
-          return{
-            text: [...prevState.text, newComment]
+          return {
+            comments: [...prevState.comments, newComment]
           }
         });
       };
@@ -44,12 +40,15 @@ class CommentSection extends Component {
                 {this.props.comments.map(comment => (
                     <Comment username={comment.username} text={comment.text} id={comment.id} />
                 ))}
-                <form>
+
+                <form onSubmit={this.addComment}>
                     <input 
                     type="text"
+                    name="comment"
+                    value={this.state.text}
+                    onSubmit={this.addComment}
                     placeholder="Add a comment..."
                     onChange={this.handleChange}
-                    addComment={this.addComment}
                     />
                 </form>
             </div>
