@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {
       data: [],
       filteredPosts: [],
-      searchTerm: ""
     };
   }
 
@@ -30,11 +29,13 @@ class App extends Component {
   };
 
   searchPosts = e => {
-    this.setState(prevState => {
-      const filteredArray = prevState.data.filter(post => {
-        post.username.includes(prevState.searchTerm);
-      });
-      return { filteredPosts: filteredArray };
+    const posts = this.state.data.filter(post => {
+      if (post.username.includes(e.target.value)) {
+        return post;
+      }
+    });
+    this.setState({
+      filteredPosts: posts 
     });
   };
 
@@ -43,7 +44,6 @@ class App extends Component {
       <div className="App">
         <SearchBar
           searchPosts={this.searchPosts}
-          searchTerm={this.state.searchTerm}
         />
         {(this.state.filteredPosts.length > 0
           ? this.state.filteredPosts

@@ -7,9 +7,48 @@ class CommentSection extends Component {
     super(props);
     this.state = {
       comments: this.props.comments,
-      text: ''
+      text: ""
     };
   }
+
+  // saveStateToLocalStorage = () => {
+  //   for (let key in this.state) {
+  //     localStorage.setItem(key, JSON.stringify(this.state[key]));
+  //   }
+  // };
+
+  // hydrateStateWithLocalStorage = () => {
+  //   for (let key in this.state) {
+  //     if (localStorage.hasOwnProperty(key)) {
+  //       let value = localStorage.getItem(key);
+
+  //       try {
+  //         value = JSON.parse(value);
+  //         this.setState({ [key]: value });
+  //       } catch (e) {
+  //         this.setState({ [key]: value });
+  //       }
+  //     }
+  //   }
+  // };
+
+  // componentDidMount = () => {
+  //   this.hydrateStateWithLocalStorage();
+
+  //   window.addEventListener(
+  //     "beforeunload",
+  //     this.saveStateToLocalStorage.bind(this)
+  //   );
+  // };
+
+  // componentWillUnmount = () => {
+  //   window.removeEventListener(
+  //     "beforeunload",
+  //     this.saveStateToLocalStorage.bind(this)
+  //   );
+
+  //   this.saveStateToLocalStorage();
+  // };
 
   handleChange = e => {
     this.setState({
@@ -30,7 +69,7 @@ class CommentSection extends Component {
     this.setState(prevState => {
       return {
         comments: [...prevState.comments, newComment],
-        text: ''
+        text: ""
       };
     });
   };

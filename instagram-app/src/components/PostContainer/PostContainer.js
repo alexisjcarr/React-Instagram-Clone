@@ -17,20 +17,20 @@ class PostContainer extends Component {
   }
 
   toggleLike = () => {
-    if(this.state.pressed===false) {
+    if (this.state.pressed === false) {
       this.setState(prevState => {
         return {
           likes: prevState.likes + 1,
-          pressed: true,
-        }
+          pressed: true
+        };
       });
     } else {
       this.setState(prevState => {
         return {
           likes: prevState.likes - 1,
-          pressed: false,
-        }
-      })
+          pressed: false
+        };
+      });
     }
   };
 
@@ -49,7 +49,9 @@ class PostContainer extends Component {
         <br />
         <span className="icons">
           {" "}
-          <span onClick={this.toggleLike}><FontAwesomeIcon icon={faHeart} /></span>
+          <span onClick={this.toggleLike}>
+            <FontAwesomeIcon icon={faHeart} />
+          </span>
           &nbsp;&nbsp;&nbsp;
           <FontAwesomeIcon icon={faComment} />
         </span>

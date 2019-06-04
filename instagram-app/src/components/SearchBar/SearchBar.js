@@ -20,7 +20,6 @@ const SearchBar = props => {
 
       <div className="div">
         <input
-          value={props.searchTerm}
           onKeyDown={props.searchPosts}
           className="searchbar"
           type="text"
