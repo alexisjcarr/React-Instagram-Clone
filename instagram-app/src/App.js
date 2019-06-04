@@ -11,7 +11,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      filteredPosts: [],
+      searchTerm: ""
     };
   }
 
@@ -21,11 +23,32 @@ class App extends Component {
     });
   }
 
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  searchPosts = e => {
+    this.setState(prevState => {
+      const filteredArray = prevState.data.filter(post => {
+        post.username.includes(prevState.searchTerm);
+      });
+      return { filteredPosts: filteredArray };
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <SearchBar />
-        {this.state.data.map(post => (
+        <SearchBar
+          searchPosts={this.searchPosts}
+          searchTerm={this.state.searchTerm}
+        />
+        {(this.state.filteredPosts.length > 0
+          ? this.state.filteredPosts
+          : this.state.data
+        ).map(post => (
           <PostContainer post={post} id={post.id} />
         ))}
       </div>
