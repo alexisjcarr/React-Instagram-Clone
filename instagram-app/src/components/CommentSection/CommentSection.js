@@ -29,7 +29,8 @@ class CommentSection extends Component {
 
     this.setState(prevState => {
       return {
-        comments: [...prevState.comments, newComment]
+        comments: [...prevState.comments, newComment],
+        text: ''
       };
     });
   };
