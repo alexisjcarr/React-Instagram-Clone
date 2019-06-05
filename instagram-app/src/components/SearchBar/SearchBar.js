@@ -24,7 +24,6 @@ const SearchBar = props => {
           className="searchbar"
           type="text"
           placeholder="&#128269; Search"
-          onKeyDown={props.searchPosts}
         />
       </div>
 

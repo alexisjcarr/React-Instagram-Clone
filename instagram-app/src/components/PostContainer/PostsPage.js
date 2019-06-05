@@ -1,70 +1,76 @@
 import React, { Component } from 'react';
+import dummyData from "../../dummy-data";
+import "../../App.scss"
 
-import "./PostContainer.scss";
-import CommentSection from "../CommentSection/CommentSection";
+import PostContainer from "./PostContainer";
+import SearchBar from "../SearchBar/SearchBar";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
-
-import * as moment from "moment";
+import PropTypes from "prop-types";
 
 class PostsPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      likes: this.props.post.likes,
-      pressed: false
-    };
-  }
-
-  toggleLike = () => {
-    if (this.state.pressed === false) {
-      this.setState(prevState => {
-        return {
-          likes: prevState.likes + 1,
-          pressed: true
-        };
-      });
-    } else {
-      this.setState(prevState => {
-        return {
-          likes: prevState.likes - 1,
-          pressed: false
-        };
+    constructor() {
+      super();
+      this.state = {
+        data: [],
+        filteredPosts: [],
+      };
+    }
+  
+    componentDidMount() {
+      this.setState({
+        data: dummyData
       });
     }
-  };
-
-  render() {
-    return (
-      <div className="postContainer">
-        <span className="user">
-          <img
-            className="profileImg"
-            src={this.props.post.thumbnailUrl}
-            alt="profileimg"
-          />{" "}
-          <p className="username">{this.props.post.username}</p>
-        </span>
-        <img src={this.props.post.imageUrl} alt="postImg" />
-        <br />
-        <span className="icons">
-          {" "}
-          <span onClick={this.toggleLike}>
-            <FontAwesomeIcon icon={faHeart} />
-          </span>
-          &nbsp;&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faComment} />
-        </span>
-        <br />
-        <span className="likes">{this.state.likes} likes</span>
-        <CommentSection comments={this.props.post.comments} />
-        <p className="time">
-          {moment(this.props.post.timestamp, "LLL").fromNow()}
-        </p>
-      </div>
-    );
+  
+    handleChange = e => {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    };
+  
+    searchPosts = e => {
+      const posts = this.state.data.filter(post => {
+        if (post.username.includes(e.target.value)) {
+          return post
+        }
+      });
+      this.setState({
+        filteredPosts: posts 
+      });
+    };
+  
+    render() {
+      return (
+        <div className="App">
+          <SearchBar
+            searchPosts={this.searchPosts}
+          />
+          {(this.state.filteredPosts.length > 0
+            ? this.state.filteredPosts
+            : this.state.data
+          ).map(post => (
+            <PostContainer post={post} id={post.id} />
+          ))}
+        </div>
+      );
+    }
   }
-}
-
+  
+  PostsPage.propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        username: PropTypes.string,
+        thumbnailUrl: PropTypes.string,
+        likes: PropTypes.number,
+        timestamp: PropTypes.string,
+        comments: PropTypes.shape({
+          id: PropTypes.number,
+          username: PropTypes.string,
+          text: PropTypes.string
+        })
+      })
+    )
+  };
+  
 export default PostsPage;
