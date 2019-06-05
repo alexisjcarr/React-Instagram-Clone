@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-const withAuthenticate = Komponent =>
+const withAuthenticate = PostsPage => LoginPage =>
   class extends Component {
     render() {
-      return (
-        <>
-          <Komponent />
-        </>
-      );
+      if(localStorage.getItem('username')) {
+          return <PostsPage />
+      } else {
+          return <LoginPage />
+      }
     }
   };
 
