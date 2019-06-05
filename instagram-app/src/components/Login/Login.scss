@@ -1,4 +1,4 @@
-form {
+.login {
     margin-top: 25%;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@ form {
         width: 25%;
     }
 
-    button {
+    .loginButton {
         width: 25%;
     }
 

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import './App.scss';
+
 import PostsPage from "./components/PostContainer/PostsPage";
 import Login from "./components/Login/Login";
 import withAuthenticate from "./components/authentication/withAunthenticate";

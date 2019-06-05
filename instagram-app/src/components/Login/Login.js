@@ -24,7 +24,7 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleLoginSubmit}>
+      <form className="login" onSubmit={this.handleLoginSubmit}>
         <input
           type="text"
           name="username"
@@ -39,7 +39,7 @@ class Login extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <button type="submit">Login</button>
+        <button className="loginButton" type="submit">Login</button>
       </form>
     );
   }
