@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import dummyData from "./dummy-data";
 import "./App.scss";
 
-import PostContainer from "./components/PostContainer/PostContainer";
+import PostsPage from "./components/PostContainer/PostsPage";
 import SearchBar from "./components/SearchBar/SearchBar";
 
 import PropTypes from "prop-types";
@@ -49,7 +49,7 @@ class App extends Component {
           ? this.state.filteredPosts
           : this.state.data
         ).map(post => (
-          <PostContainer post={post} id={post.id} />
+          <PostsPage post={post} id={post.id} />
         ))}
       </div>
     );
