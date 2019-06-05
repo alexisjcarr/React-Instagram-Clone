@@ -22,7 +22,7 @@ class CommentSection extends Component {
 
     const newComment = {
       id: Date.now(),
-      username: "alexiscarr",
+      username: localStorage.getItem('username'),
       text: this.state.text
     };
     console.log(newComment);
