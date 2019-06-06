@@ -1,5 +1,42 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+import logo from "./logo.png";
 import "./Login.scss";
+
+const Form = styled.form`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  margin-top: 5%;
+  border: 1px solid #E6E6E6;
+`;
+
+const Img = styled.img`
+  heigth: auto;
+  width: auto;
+`;
+
+const Input = styled.input`
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 10px;
+  width: 50%;
+  border-radius: 8px;
+`;
+
+const Button = styled.button`
+  width: 25%;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  background-color: #3897ef;
+  padding: 10px;
+  border-radius: 8px;
+`;
 
 class Login extends Component {
   constructor(props) {
@@ -24,23 +61,27 @@ class Login extends Component {
 
   render() {
     return (
-      <form className="login" onSubmit={this.handleLoginSubmit}>
-        <input
+      <Form className="login" onSubmit={this.handleLoginSubmit}>
+        <Img src={logo} alt="" />
+        <br />
+        <Input
           type="text"
           name="username"
           placeholder="Phone number, username, or email"
           onChange={this.handleChange}
         />
         <br />
-        <input
+        <Input
           type="password"
           name="password"
           placeholder="Password"
           onChange={this.handleChange}
         />
         <br />
-        <button className="loginButton" type="submit">Login</button>
-      </form>
+        <Button className="loginButton" type="submit">
+          Login
+        </Button>
+      </Form>
     );
   }
 }
