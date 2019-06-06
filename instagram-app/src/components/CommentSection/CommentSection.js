@@ -11,45 +11,6 @@ class CommentSection extends Component {
     };
   }
 
-  saveStateToLocalStorage = () => {
-    for (let key in this.state) {
-      localStorage.setItem(key, JSON.stringify(this.state[key]));
-    }
-  };
-
-  hydrateStateWithLocalStorage = () => {
-    for (let key in this.state) {
-      if (localStorage.hasOwnProperty(key)) {
-        let value = localStorage.getItem(key);
-
-        try {
-          value = JSON.parse(value);
-          this.setState({ [key]: value });
-        } catch (e) {
-          this.setState({ [key]: value });
-        }
-      }
-    }
-  };
-
-  componentDidMount = () => {
-    this.hydrateStateWithLocalStorage();
-
-    window.addEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
-  };
-
-  componentWillUnmount = () => {
-    window.removeEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
-
-    this.saveStateToLocalStorage();
-  };
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -61,7 +22,7 @@ class CommentSection extends Component {
 
     const newComment = {
       id: Date.now(),
-      username: "alexiscarr",
+      username: localStorage.getItem('username'),
       text: this.state.text
     };
     console.log(newComment);
@@ -73,6 +34,55 @@ class CommentSection extends Component {
       };
     });
   };
+
+  // saveStateToLocalStorage = () => {
+  //   // for every item in React state
+  //   for (let key in this.state) {
+  //     // save to localStorage
+  //     localStorage.setItem(key, JSON.stringify(this.state[key]));
+  //   }
+  // };
+
+  // hydrateStateWithLocalStorage = () => {
+  //   // for all items in state
+  //   for (let key in this.state) {
+  //     // if the key exists in localStorage
+  //     if (localStorage.hasOwnProperty(key)) {
+  //       // get the key's value from localStorage
+  //       let value = localStorage.getItem(key);
+
+  //       // parse the localStorage string and setState
+  //       try {
+  //         value = JSON.parse(value);
+  //         this.setState({ [key]: value });
+  //       } catch (e) {
+  //         // handle empty string
+  //         this.setState({ [key]: value });
+  //       }
+  //     }
+  //   }
+  // };
+
+  // componentDidMount = () => {
+  //   this.hydrateStateWithLocalStorage();
+
+  //   // add event listener to save state to localStorage
+  //   // when user leaves/refreshes the page
+  //   window.addEventListener(
+  //     "beforeunload",
+  //     this.saveStateToLocalStorage.bind(this)
+  //   );
+  // };
+
+  // componentWillUnmount = () => {
+  //   window.removeEventListener(
+  //     "beforeunload",
+  //     this.saveStateToLocalStorage.bind(this)
+  //   );
+
+  //   // saves if component has a chance to unmount
+  //   this.saveStateToLocalStorage();
+  // };
 
   render() {
     return (
