@@ -1,11 +1,19 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import "./PostContainer.scss";
+
 import CommentSection from "../CommentSection/CommentSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 
 import * as moment from "moment";
+
+const ProfileImg = styled.img`
+  border-radius: 100px;
+  width: 30px;
+  margin-right: 10px;
+`
 
 class PostContainer extends Component {
   constructor(props) {
@@ -38,7 +46,7 @@ class PostContainer extends Component {
     return (
       <div className="postContainer">
         <span className="user">
-          <img
+          <ProfileImg
             className="profileImg"
             src={this.props.post.thumbnailUrl}
             alt="profileimg"
@@ -57,7 +65,7 @@ class PostContainer extends Component {
         </span>
         <br />
         <span className="likes">{this.state.likes} likes</span>
-        <CommentSection comments={this.props.post.comments} />
+        <CommentSection comments={this.props.post.comments} postId={this.props.post.id} />
         <p className="time">
           {moment(this.props.post.timestamp, "LLL").fromNow()}
         </p>
