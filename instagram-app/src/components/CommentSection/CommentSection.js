@@ -51,13 +51,11 @@ class CommentSection extends Component {
     const commentz = this.state.comments.slice();
     commentz.push(newComment);
 
-    this.setState(prevState => {
-      return {
-        comments: commentz,
-        text: ""
-      }
-    }, () => {this.setComments()});
-  };
+    this.setState({
+      comments: commentz,
+      text: ""
+    }, () => {this.setComments()}
+    )};
 
   render() {
     return (
